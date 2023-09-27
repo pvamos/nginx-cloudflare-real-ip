@@ -6,44 +6,44 @@ To provide the client (visitor) IP address for every request to the origin, Clou
 ## Nginx Configuration
 With a small configuration modification we can integrate replacing the real ip address of the visitor instead of getting CloudFlare's load balancers' ip addresses.
 
-Open "/etc/nginx/nginx.conf" file with your favorite text editor and just add the following lines to your nginx.conf inside http{....} block.
+Open "/usr/local/etc/nginx/nginx.conf" file with your favorite text editor and just add the following lines to your nginx.conf inside http{....} block.
 
 ```nginx
-include /etc/nginx/cloudflare;
+include /usr/local/etc/nginx/cloudflare;
 ```
 
 The bash script may run manually or can be scheduled to refresh the ip list of CloudFlare automatically.
 ```sh
-#!/bin/bash
+#!/bin/tcsh
 
-CLOUDFLARE_FILE_PATH=/etc/nginx/cloudflare
+set CLOUDFLARE_FILE_PATH="/usr/local/etc/nginx/cloudflare"
 
 echo "#Cloudflare" > $CLOUDFLARE_FILE_PATH;
 echo "" >> $CLOUDFLARE_FILE_PATH;
 
 echo "# - IPv4" >> $CLOUDFLARE_FILE_PATH;
-for i in `curl -s -L https://www.cloudflare.com/ips-v4`; do
+foreach i (`curl -s -L https://www.cloudflare.com/ips-v4`)
     echo "set_real_ip_from $i;" >> $CLOUDFLARE_FILE_PATH;
-done
+end
 
 echo "" >> $CLOUDFLARE_FILE_PATH;
 echo "# - IPv6" >> $CLOUDFLARE_FILE_PATH;
-for i in `curl -s -L https://www.cloudflare.com/ips-v6`; do
+foreach i (`curl -s -L https://www.cloudflare.com/ips-v6`)
     echo "set_real_ip_from $i;" >> $CLOUDFLARE_FILE_PATH;
-done
+end
 
 echo "" >> $CLOUDFLARE_FILE_PATH;
 echo "real_ip_header CF-Connecting-IP;" >> $CLOUDFLARE_FILE_PATH;
 
 #test configuration and reload nginx
-nginx -t && systemctl reload nginx
+nginx -t && service nginx reload
 ```
 
 ## Output
 Your "/etc/nginx/cloudflare" file may look like as below;
 
 ```nginx
-#Cloudflare ip addresses
+#Cloudflare
 
 # - IPv4
 set_real_ip_from 173.245.48.0/20;
@@ -72,7 +72,6 @@ set_real_ip_from 2a06:98c0::/29;
 set_real_ip_from 2c0f:f248::/32;
 
 real_ip_header CF-Connecting-IP;
-
 ```
 
 ## Crontab
