@@ -1,4 +1,4 @@
-# Get Real Visitor IP Address (Restoring Visitor IPs) with Nginx and CloudFlare - Ported to FreeBSD tcsh (from bash).
+# Get Real Visitor IP Address (Restoring Visitor IPs) with Nginx and CloudFlare - Ported to FreeBSD tcsh (from bash) by @pvamos
 This project aims to modify your nginx configuration to let you get the real ip address of your visitors for your web applications that behind of Cloudflare's reverse proxy network. Bash script can be scheduled to create an automated up-to-date Cloudflare ip list file.
 
 To provide the client (visitor) IP address for every request to the origin, Cloudflare adds the "CF-Connecting-IP" header. We will catch the header and get the real ip address of the visitor.
@@ -40,7 +40,7 @@ nginx -t && service nginx reload
 ```
 
 ## Output
-Your "/etc/nginx/cloudflare" file may look like as below;
+Your "/usr/local/etc/nginx/cloudflare" file may look like as below;
 
 ```nginx
 #Cloudflare
@@ -75,11 +75,11 @@ real_ip_header CF-Connecting-IP;
 ```
 
 ## Crontab
-Change the location of "/opt/scripts/cloudflare-ip-whitelist-sync.sh" anywhere you want. 
+Change the location of "/usr/local/etc/nginx/cloudflare-ip-whitelist-sync.sh" anywhere you want. 
 CloudFlare ip addresses are automatically refreshed every day, and nginx will be realoded when synchronization is completed.
 ```sh
 # Auto sync ip addresses of Cloudflare and reload nginx
-30 2 * * * /opt/scripts/cloudflare-ip-whitelist-sync.sh >/dev/null 2>&1
+30 2 * * * /usr/local/etc/nginx/cloudflare-ip-whitelist-sync.sh >/dev/null 2>&1
 ```
 
 ### License
