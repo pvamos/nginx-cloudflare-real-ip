@@ -1,5 +1,6 @@
 # Get Real Visitor IP Address (Restoring Visitor IPs) with Nginx and CloudFlare
 
+## Forked from https://github.com/ergin/nginx-cloudflare-real-ip
 ## Ported to FreeBSD tcsh (from bash) by [@pvamos](https://github.com/pvamos)
 
 This project aims to modify your nginx configuration to let you get the real ip address of your visitors for your web applications that behind of Cloudflare's reverse proxy network. Bash script can be scheduled to create an automated up-to-date Cloudflare ip list file.
