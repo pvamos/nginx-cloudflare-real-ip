@@ -1,0 +1,4 @@
+# $FreeBSD$
+# /etc/newsyslog.conf.d/nginx-cloudflare-real-ip.conf
+# logfilename                         [owner:group] mode count size when flags [/pid_file] [sig_num]
+/var/log/nginx-cloudflare-real-ip.log root:wheel    644  20    2048 *    JC
