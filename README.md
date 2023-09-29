@@ -1,4 +1,4 @@
-# Get the origin client IP behind Cloudflare with Nginx, using a cronjob to keep config up to date
+# Get the origin client IP behind Cloudflare for Nginx, using a cronjob to keep config up to date
 
 Forked from and main concept from Linux / Bash version of [Ergin BULUT](https://github.com/ergin) https://github.com/ergin/nginx-cloudflare-real-ip
 
