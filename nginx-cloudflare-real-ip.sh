@@ -20,7 +20,7 @@
 # - ported to FreeBSD tcsh
 # - checks validating Cloudflare IPv4 or IPv6 lists received
 # - previous update state storage in files
-# - checks to update config (and restart nginx) only if really necessary
+# - checks to update config (and restart nginx) only if really necessary (the published Cloudflare IP lists has chaged)
 # - backing up nginx config in /tmp/cloudflare_backup_{tcsh PID}_{Unix time stamp},
 #     rollback without restart, if nginx configuration test fails
 # - added detailed logging, (also including nginx logs if nginx config change fails),
