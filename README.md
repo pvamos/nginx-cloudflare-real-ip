@@ -1,4 +1,4 @@
-# Get Real Visitor IP Address (Restoring Visitor IPs) with Nginx and CloudFlare
+# Get the origin client IP behind Cloudflare with Nginx
 
 Forked from and main concept from Linux / Bash version of [Ergin BULUT](https://github.com/ergin) https://github.com/ergin/nginx-cloudflare-real-ip
 
