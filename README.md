@@ -2,7 +2,7 @@
 
 Forked from and main concept from Linux / Bash version of [Ergin BULUT](https://github.com/ergin) https://github.com/ergin/nginx-cloudflare-real-ip
 
-Ported to FreeBSD / tcsh by [@pvamos](https://github.com/pvamos) https://github.com/pvamos/nginx-cloudflare-real-ip
+Ported to FreeBSD / tcsh by [Péter Vámos](https://github.com/pvamos) https://github.com/pvamos/nginx-cloudflare-real-ip
 
 Simple `tcsh` script to create and update an includable nginx config file snippet containing `real_ip_header` `set_real_ip_from` nginx directives for source IPv4 and IPv6 lists published by Cloudflare:
 
